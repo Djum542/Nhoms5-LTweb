@@ -22,3 +22,5 @@ def login(request):
     return render(request, 'home/login.html')
 def logup(request):
     return render(request, 'home/signup.html')
+def shop(request):
+    return render(request, 'home/shop.html')
