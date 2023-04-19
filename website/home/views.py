@@ -24,3 +24,7 @@ def logup(request):
     return render(request, 'home/signup.html')
 def shop(request):
     return render(request, 'home/shop.html')
+def single(request):
+    return render(request, 'home/shop-single.html')
+def cart(request):
+    return render(request, 'home/cart.html')
