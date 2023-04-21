@@ -22,9 +22,12 @@
 
 <body>
     {% block content %}
+    <center>
     <div class="wrapper">
         <div class="title">Đăng Ký Ngay</div>
-        <form action="#">
+        
+        <form action="{% url 'home:logup' %}" method="POST">
+            {% csrf_token %}
             <div class="field">
                 <input type="text" required>
                 <label>Email Address</label>
@@ -45,12 +48,13 @@
                 
             </div>
             <div class="field">
-                <input type="submit" value="Tạo tài khoảng">
+                <input type="submit" value="Tạo tài khoản">
             </div>
-            <div class="signup-link">Đã có tài khoảng <a href="{% url 'home:login' %}">Đăng nhập ngay</a></div>
+            <div class="signup-link">Đã có tài khoản <a href="{% url 'home:login' %}">Đăng nhập ngay</a></div>
             <div class="signup-link"><a href="{% url 'home:home' %}">Trở về cửa hàng</a></div>
         </form>
     </div>
+</center>
     {% endblock %}
 </body>
 

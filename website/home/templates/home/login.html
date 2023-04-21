@@ -25,16 +25,21 @@
 </head>
 
 <body>
-    {% block content %}
+    
+    
     <div class="wrapper">
         <div class="title">Đăng nhập ngay</div>
-        <form action="#">
+        {% if error_message %}
+        <p><strong>{{ error_message }}</strong></p>
+        {% endif %}
+        <form action="{% url 'home:login' %}" method="post">
+            {% csrf_token %}
             <div class="field">
-                <input type="text" required>
+                <input name="username" type="text" required >
                 <label>Email Address</label>
             </div>
             <div class="field">
-                <input type="password" required>
+                <input name="password" type="password" required>
                 <label>Password</label>
             </div>
             <div class="content">
@@ -49,9 +54,11 @@
             </div>
             <div class="signup-link">Chưa có tài khoảng <a href="{% url 'home:logup' %}">Đăng ký ngay</a></div>
             <div class="signup-link"><a href="{% url 'home:home' %}">Trở về cửa hàng</a></div>
+            
+           
         </form>
     </div>
-{% endblock %}
+
 </form>
 </body>
 
