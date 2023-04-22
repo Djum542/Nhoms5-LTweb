@@ -4,7 +4,7 @@ from django.views import View
 from django.contrib.auth.models import User
 from django.http import HttpResponse
 from django.contrib.auth import authenticate, login
-
+from django.contrib.auth.forms import UserCreationForm
 def home(request):
     return render(request, 'home/index.html')
 # class loginform(View):
