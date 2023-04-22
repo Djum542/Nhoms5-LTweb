@@ -33,17 +33,18 @@ def logins(request):
             return render(request, 'home/login.html', {'error_message': error_message})
     else:
         return render(request, 'home/login.html')
-class signUpview(View):
-    def get(self, request):
-        rF = signUpForm # một class trong file form.py
-        return render(request, 'home/signup.html', {'rF': rF})
-    def post(seft, request):
+
+def post(request):
+    # return render(request, 'home/signup.html')
+    if request.method == 'POST':
         username = request.POST['username'] # truyền thông tin theo phương thức post
         email = request.POST['email']
         password = request.POST['password']
-        user = User.objects.create_user(username,  email, password)
+        user = User.objects.create_user(username, email ,password)
         user.save()
-        return HttpResponse('Save user success')
+        return render(request, 'home/login.html')
+    else:
+        return render(request, 'home/signup.html')
 def shop(request):
     return render(request, 'home/shop.html')
 def single(request):
