@@ -1,6 +1,7 @@
 from django.shortcuts import render, redirect
 from .forms import loginform, signUpForm
 from django.views import View
+from .models import product
 from django.contrib.auth.models import User
 from django.http import HttpResponse
 from django.contrib.auth import authenticate, login
@@ -28,11 +29,16 @@ def logins(request):
         if user is not None:
             login(request, user)
             return render(request, 'home/index.html')
+            if is_superuser == 1:
+                return render(request, 'http://127.0.0.1:8000/admin/')
+            else:
+                return render(request, 'home/index.html')
         else:
             error_message = 'Invalid login credentials. Please try again.'
             return render(request, 'home/login.html', {'error_message': error_message})
     else:
-        return render(request, 'home/login.html')
+        success_message = 'Đăng nhập thành công'
+        return render(request, 'home/login.html', {'success_message': success_message})
 
 def post(request):
     # return render(request, 'home/signup.html')
@@ -50,4 +56,14 @@ def shop(request):
 def single(request):
     return render(request, 'home/shop-single.html')
 def cart(request):
+    # product = product.objects.get(id = product_id)
+    # cart = request.sessions.get('cart', {})
+    # cart[product_id] = {
+    #     'id': product_id,
+    #     'name': product.name,
+    #     'price': str(product.price),
+    #     'quantity': 1,
+    #     'image': product.image.url
+    # }
+    # request.sessions['cart'] = cart
     return render(request, 'home/cart.html')
