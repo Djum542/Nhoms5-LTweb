@@ -1,11 +1,12 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
 from .forms import loginform, signUpForm
 from django.views import View
-from .models import product
+from .models import product, cart
 from django.contrib.auth.models import User
 from django.http import HttpResponse
 from django.contrib.auth import authenticate, login
 from django.contrib.auth.forms import UserCreationForm
+from django.contrib.auth.decorators import login_required
 def home(request):
     return render(request, 'home/index.html')
 # class loginform(View):
@@ -55,7 +56,8 @@ def shop(request):
     return render(request, 'home/shop.html')
 def single(request):
     return render(request, 'home/shop-single.html')
-def cart(request):
+
+def cart(request, product_id):
     # product = product.objects.get(id = product_id)
     # cart = request.sessions.get('cart', {})
     # cart[product_id] = {
@@ -66,4 +68,14 @@ def cart(request):
     #     'image': product.image.url
     # }
     # request.sessions['cart'] = cart
+    product = product.objects.get(id = product_id)
+    try:
+        cart = cart.objects.get(user = request.user, product = product)
+        cart.quantity +=1
+        cart.save()
+    except cart.DoesNotExist:
+        cart = cart.objects.create(user = request.user, product = product)
     return render(request, 'home/cart.html')
+def product_detail(request, name):
+    products = get_object_or_404(product, id = name)
+    return render(request, 'home/product.html', {'product':product})

@@ -109,7 +109,7 @@
         </div>
       </div>
     </div>
-
+    
     <div class="site-section">
       <div class="container">
         <div class="row">
@@ -119,7 +119,7 @@
               alt="Image" class="img-fluid">
           </div>
           <div class="col-md-6">
-            <h2 class="text-black">Levents® Aquarium Tee</h2>
+            <h2 class="text-black" >Levents® Aquarium Tee</h2>
             <p>Levents® Aquarium Tee
 
               Chất liệu: Lì ven Original – bề mặt vải không đổ lông mang cảm giác thoáng mát
@@ -159,12 +159,13 @@
               </div>
 
             </div>
-            <p><a href="{% url 'home:cart' %}" class="buy-now btn btn-sm btn-primary">Thêm vào giỏ hàng</a></p>
+            <p><a data-product="{{product.title}}" data-action="add" href="{% url 'home:cart' %}" class="buy-now btn btn-sm btn-primary">Thêm vào giỏ hàng</a></p>
 
           </div>
         </div>
       </div>
     </div>
+  
     <footer class="site-footer border-top">
       <div class="container">
         <div class="row">
