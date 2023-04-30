@@ -173,7 +173,7 @@
                     <td>300.000đ</td>
                     <td><a href="#" class="btn btn-primary btn-sm">X</a></td>
                   </tr>
-
+                  
                   <tr>
                     <td class="product-thumbnail">
                       <img src="{{cart.image}}" alt="Image" class="img-fluid">
@@ -196,8 +196,9 @@
 
                     </td>
                     <td>{{cart.price}}</td>
-                    <td><a href="#" class="btn btn-primary btn-sm">X</a></td>
+                    <td><a href="{% url 'home:cart' cart.product.id %}" class="btn btn-primary btn-sm">X</a></td>
                   </tr>
+                  
                 </tbody>
               </table>
             </div>
