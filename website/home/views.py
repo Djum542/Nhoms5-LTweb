@@ -55,11 +55,11 @@ def post(request):
         return render(request, 'home/signup.html')
 def shop(request):
     products = product.objects.all()
-    return render(request, 'home/shop.html', {'product':products})
+    return render(request, 'home/shop.html', {'products':products})
 def single(request, pk):
     produc = product.objects.get(id = pk)
-    print(product)
-    return render(request, 'home/shop-single.html', {'product':produc})
+    
+    return render(request, 'home/shop-single.html', {'produc':produc})
 
 def cart(request, product_id):
     # product = product.objects.get(id = product_id)

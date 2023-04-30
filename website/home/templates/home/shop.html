@@ -143,14 +143,14 @@
             </div>
             <div class="row mb-5">
             
-            {% for product in product %}
+            {% for product in products %}
               <div class="col-sm-6 col-lg-4 mb-4" data-aos="fade-up">
                 <div class="block-4 text-center border">
                   <figure class="block-4-image">
-                    <a href="{% url 'single' product.id %}"><img src="{{product.image}}" alt="Image placeholder" class="img-fluid"></a>
+                    <a href="{% url 'home:single' product.id %}"><img src="{{product.image}}" alt="Image placeholder" class="img-fluid"></a>
                   </figure>
                   <div class="block-4-text p-4">
-                    <h3><a href="{% url 'home:single' %}">{{product.name}}</a></h3>
+                    <h3><a href="{% url 'home:single' product.id %}">{{product.name}}</a></h3>
                     <p class="mb-0">{{product.descripyion}}</p>
                     <p class="text-primary font-weight-bold">{{product.price}}</p>
                   </div>
@@ -160,10 +160,10 @@
               <div class="col-sm-6 col-lg-4 mb-4" data-aos="fade-up">
                 <div class="block-4 text-center border">
                   <figure class="block-4-image">
-                    <a href="{% url 'single' product.id %}"><img src="https://levents.asia/wp-content/uploads/2023/03/z4235418124482_e9fafc08a54ffc1c4595c899e2e028d4-400x500.jpg" alt="Image placeholder" class="img-fluid"></a>
+                    <a href="{% url 'home:single' product.id %}"><img src="https://levents.asia/wp-content/uploads/2023/03/z4235418124482_e9fafc08a54ffc1c4595c899e2e028d4-400x500.jpg" alt="Image placeholder" class="img-fluid"></a>
                   </figure>
                   <div class="block-4-text p-4">
-                    <h3><a href="{% url 'home:single' %}">T-Shirt</a></h3>
+                    <h3><a href="{% url 'home:single' product.id %}">T-Shirt</a></h3>
                     <p class="mb-0">Levents® Aquarium Tee</p>
                     <p class="text-primary font-weight-bold">300.000đ</p>
                   </div>
@@ -172,10 +172,10 @@
               <div class="col-sm-6 col-lg-4 mb-4" data-aos="fade-up">
                 <div class="block-4 text-center border">
                   <figure class="block-4-image">
-                    <a href="{% url 'single' product.id %}"><img src="https://levents.asia/wp-content/uploads/2023/03/z4235418124482_e9fafc08a54ffc1c4595c899e2e028d4-400x500.jpg" alt="Image placeholder" class="img-fluid"></a>
+                    <a href="{% url 'home:single' product.id %}"><img src="https://levents.asia/wp-content/uploads/2023/03/z4235418124482_e9fafc08a54ffc1c4595c899e2e028d4-400x500.jpg" alt="Image placeholder" class="img-fluid"></a>
                   </figure>
                   <div class="block-4-text p-4">
-                    <h3><a href="{% url 'single' product.id %}">T-Shirt</a></h3>
+                    <h3><a href="{% url 'home:single' product.id %}">T-Shirt</a></h3>
                     <p class="mb-0">Levents® Aquarium Tee</p>
                     <p class="text-primary font-weight-bold">300.000đ</p>
                   </div>
@@ -184,10 +184,10 @@
               <div class="col-sm-6 col-lg-4 mb-4" data-aos="fade-up">
                 <div class="block-4 text-center border">
                   <figure class="block-4-image">
-                    <a href="{% url 'single' product.id %}"><img src="https://levents.asia/wp-content/uploads/2023/03/z4235418124482_e9fafc08a54ffc1c4595c899e2e028d4-400x500.jpg" alt="Image placeholder" class="img-fluid"></a>
+                    <a href="{% url 'home:single' product.id %}"><img src="https://levents.asia/wp-content/uploads/2023/03/z4235418124482_e9fafc08a54ffc1c4595c899e2e028d4-400x500.jpg" alt="Image placeholder" class="img-fluid"></a>
                   </figure>
                   <div class="block-4-text p-4">
-                    <h3><a href="{% url 'single' product.id %}">T-Shirt</a></h3>
+                    <h3><a href="{% url 'home:single' product.id %}">T-Shirt</a></h3>
                     <p class="mb-0">Levents® Aquarium Tee</p>
                     <p class="text-primary font-weight-bold">300.000đ</p>
                   </div>
@@ -196,10 +196,10 @@
               <div class="col-sm-6 col-lg-4 mb-4" data-aos="fade-up">
                 <div class="block-4 text-center border">
                   <figure class="block-4-image">
-                    <a href="{% url 'single' product.id %}"><img src="https://levents.asia/wp-content/uploads/2023/03/z4235418124482_e9fafc08a54ffc1c4595c899e2e028d4-400x500.jpg" alt="Image placeholder" class="img-fluid"></a>
+                    <a href="{% url 'home:single' product.id %}"><img src="https://levents.asia/wp-content/uploads/2023/03/z4235418124482_e9fafc08a54ffc1c4595c899e2e028d4-400x500.jpg" alt="Image placeholder" class="img-fluid"></a>
                   </figure>
                   <div class="block-4-text p-4">
-                    <h3><a href="{% url 'single' product.id %}">T-Shirt</a></h3>
+                    <h3><a href="{% url 'home:single' product.id %}">T-Shirt</a></h3>
                     <p class="mb-0">Levents® Aquarium Tee</p>
                     <p class="text-primary font-weight-bold">300.000đ</p>
                   </div>
@@ -208,10 +208,10 @@
               <div class="col-sm-6 col-lg-4 mb-4" data-aos="fade-up">
                 <div class="block-4 text-center border">
                   <figure class="block-4-image">
-                    <a href="{% url 'single' product.id %}"><img src="https://levents.asia/wp-content/uploads/2023/03/z4235418124482_e9fafc08a54ffc1c4595c899e2e028d4-400x500.jpg" alt="Image placeholder" class="img-fluid"></a>
+                    <a href="{% url 'home:single' product.id %}"><img src="https://levents.asia/wp-content/uploads/2023/03/z4235418124482_e9fafc08a54ffc1c4595c899e2e028d4-400x500.jpg" alt="Image placeholder" class="img-fluid"></a>
                   </figure>
                   <div class="block-4-text p-4">
-                    <h3><a href="{% url 'single' product.id %}">T-Shirt</a></h3>
+                    <h3><a href="{% url 'home:single' product.id %}">T-Shirt</a></h3>
                     <p class="mb-0">Levents® Aquarium Tee</p>
                     <p class="text-primary font-weight-bold">300.000đ</p>
                   </div>
@@ -220,10 +220,10 @@
               <div class="col-sm-6 col-lg-4 mb-4" data-aos="fade-up">
                 <div class="block-4 text-center border">
                   <figure class="block-4-image">
-                    <a href="{% url 'single' product.id %}"><img src="https://levents.asia/wp-content/uploads/2023/03/z4235418124482_e9fafc08a54ffc1c4595c899e2e028d4-400x500.jpg" alt="Image placeholder" class="img-fluid"></a>
+                    <a href="{% url 'home:single' product.id %}"><img src="https://levents.asia/wp-content/uploads/2023/03/z4235418124482_e9fafc08a54ffc1c4595c899e2e028d4-400x500.jpg" alt="Image placeholder" class="img-fluid"></a>
                   </figure>
                   <div class="block-4-text p-4">
-                    <h3><a href="{% url 'single' product.id %}">T-Shirt</a></h3>
+                    <h3><a href="{% url 'home:single' product.id %}">T-Shirt</a></h3>
                     <p class="mb-0">Levents® Aquarium Tee</p>
                     <p class="text-primary font-weight-bold">300.000đ</p>
                   </div>
@@ -232,10 +232,10 @@
               <div class="col-sm-6 col-lg-4 mb-4" data-aos="fade-up">
                 <div class="block-4 text-center border">
                   <figure class="block-4-image">
-                    <a href="{% url 'single' product.id %}"><img src="https://levents.asia/wp-content/uploads/2023/03/z4235418124482_e9fafc08a54ffc1c4595c899e2e028d4-400x500.jpg" alt="Image placeholder" class="img-fluid"></a>
+                    <a href="{% url 'home:single' product.id %}"><img src="https://levents.asia/wp-content/uploads/2023/03/z4235418124482_e9fafc08a54ffc1c4595c899e2e028d4-400x500.jpg" alt="Image placeholder" class="img-fluid"></a>
                   </figure>
                   <div class="block-4-text p-4">
-                    <h3><a href="{% url 'single' product.id %}">T-Shirt</a></h3>
+                    <h3><a href="{% url 'home:single' product.id %}">T-Shirt</a></h3>
                     <p class="mb-0">Levents® Aquarium Tee</p>
                     <p class="text-primary font-weight-bold">300.000đ</p>
                   </div>
@@ -244,10 +244,10 @@
               <div class="col-sm-6 col-lg-4 mb-4" data-aos="fade-up">
                 <div class="block-4 text-center border">
                   <figure class="block-4-image">
-                    <a href="{% url 'single' product.id %}"><img src="https://levents.asia/wp-content/uploads/2023/03/z4235418124482_e9fafc08a54ffc1c4595c899e2e028d4-400x500.jpg" alt="Image placeholder" class="img-fluid"></a>
+                    <a href="{% url 'home:single' product.id %}"><img src="https://levents.asia/wp-content/uploads/2023/03/z4235418124482_e9fafc08a54ffc1c4595c899e2e028d4-400x500.jpg" alt="Image placeholder" class="img-fluid"></a>
                   </figure>
                   <div class="block-4-text p-4">
-                    <h3><a href="{% url 'single' product.id %}">T-Shirt</a></h3>
+                    <h3><a href="{% url 'home:single' product.id %}">T-Shirt</a></h3>
                     <p class="mb-0">Levents® Aquarium Tee</p>
                     <p class="text-primary font-weight-bold">300.000đ</p>
                   </div>
