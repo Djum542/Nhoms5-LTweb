@@ -61,7 +61,7 @@ def single(request, pk):
     
     return render(request, 'home/shop-single.html', {'produc':produc})
 
-def cart(request, product_id):
+def cart(request, pk):
     # product = product.objects.get(id = product_id)
     # cart = request.sessions.get('cart', {})
     # cart[product_id] = {
@@ -72,14 +72,15 @@ def cart(request, product_id):
     #     'image': product.image.url
     # }
     # request.sessions['cart'] = cart
-    product = product.objects.get(id = product_id)
-    try:
-        cart = cart.objects.get(user = request.user, product = product)
-        cart.quantity +=1
-        cart.save()
-    except cart.DoesNotExist:
-        cart = cart.objects.create(user = request.user, product = product)
-    return render(request, 'home/cart.html')
+    cart = product.objects.get(id = pk)
+    
+    # try:
+    #     carts = cart.objects.get(user = request.user, product = product)
+    #     carts.quantity +=1
+    #     carts.save()
+    # except cart.DoesNotExist:
+    #     cart = cart.objects.create(user = request.user, product = product)
+    return render(request, 'home/cart.html', {'cart':cart})
 # def product_detail(request, name):
 #     model = product
 #     queryset = product.objects.all()

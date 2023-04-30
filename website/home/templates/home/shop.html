@@ -23,6 +23,7 @@
   </head>
   <body>
  {% block body %}
+  {% for product in products %}
   <div class="site-wrap">
     <header class="site-navbar" role="banner">
       <div class="site-navbar-top">
@@ -50,7 +51,7 @@
                   <li><a href="#"><span class="icon icon-person"></span></a></li>
                   <li><a href="#"><span class="icon icon-heart-o"></span></a></li>
                   <li>
-                    <a href="{% url 'home:cart' %}" class="site-cart">
+                    <a href="{% url 'home:cart' product.id %}" class="site-cart">
                       <span class="icon icon-shopping_cart"></span>
                       <span class="count">2</span>
                     </a>
@@ -143,7 +144,7 @@
             </div>
             <div class="row mb-5">
             
-            {% for product in products %}
+            
               <div class="col-sm-6 col-lg-4 mb-4" data-aos="fade-up">
                 <div class="block-4 text-center border">
                   <figure class="block-4-image">
@@ -253,11 +254,7 @@
                   </div>
                 </div>
               </div>
-              {% endfor %}
-             
-              
-
-            </div>
+               </div>
             <div class="row" data-aos="fade-up">
               <div class="col-md-12 text-center">
                 <div class="site-block-27">
@@ -326,7 +323,7 @@
         </div> 
       </div>
     </div>
-
+    {% endfor %}
     <footer class="site-footer border-top">
       <div class="container">
         <div class="row">
@@ -387,6 +384,8 @@
       </div>
     </footer>
   </div>
+  
+  
   {% endblock %}
   <script src="{% static 'js/jquery-3.3.1.min.js' %}"></script>
   <script src="{% static 'js/jquery-ui.js' %}"></script>

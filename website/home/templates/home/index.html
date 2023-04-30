@@ -25,7 +25,7 @@
 
 <body>
   {% block body %}
-
+  {% for product in products %}
   <div class="site-wrap">
     <header class="site-navbar" role="banner">
       <div class="site-navbar-top">
@@ -56,7 +56,7 @@
                     <a href="#"><span class="icon icon-heart-o"></span></a>
                   </li>
                   <li>
-                    <a href="{% url 'home:cart' %}" class="site-cart">
+                    <a href="{% url 'home:cart' product.id %}" class="site-cart">
                       <span class="icon icon-shopping_cart"></span>
                       <span class="count">2</span>
                     </a>
@@ -170,7 +170,7 @@
               <h2>Sản phẩm nổi bật</h2>
             </div>
           </div>
-          {% for product in products %}
+          
           <div class="row">
             <div class="col-md-12">
               <div class="nonloop-block-3 owl-carousel">
