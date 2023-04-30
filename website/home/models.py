@@ -27,3 +27,5 @@ class cart(models.Model):
     quantity = models.PositiveIntegerField(default = 1)
     def __str__(self):
         return f"{self.quantity} x {self.product.product_id}"
+
+

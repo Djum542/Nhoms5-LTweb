@@ -23,7 +23,7 @@
 </head>
 
 <body>
-
+{% block body %}
   <div class="site-wrap">
     <header class="site-navbar" role="banner">
       <div class="site-navbar-top">
@@ -109,7 +109,7 @@
         </div>
       </div>
     </div>
-    
+    {% for products in product %}
     <div class="site-section">
       <div class="container">
         <div class="row">
@@ -119,7 +119,7 @@
               alt="Image" class="img-fluid">
           </div>
           <div class="col-md-6">
-            <h2 class="text-black" >Levents® Aquarium Tee</h2>
+            <h2 class="text-black" >{{products.name}}</h2>
             <p>Levents® Aquarium Tee
 
               Chất liệu: Lì ven Original – bề mặt vải không đổ lông mang cảm giác thoáng mát
@@ -127,7 +127,7 @@
               Lì ven Original không lông được áp dụng cho toàn bộ sản phẩm áo thun màu đen
               Lì ven Original 2.0 có lông vẫn được áp dụng cho các áo thun màu khác
               Kích cỡ: 1/2/3/4</p>
-            <p><strong class="text-primary h4">300.000đ</strong></p>
+            <p><strong class="text-primary h4">{{products.price}}</strong></p>
             <div class="mb-1 d-flex">
               <label for="option-sm" class="d-flex mr-3 mb-3">
                 <span class="d-inline-block mr-2" style="top:-2px; position: relative;"><input type="radio"
@@ -157,7 +157,7 @@
                   <button class="btn btn-outline-primary js-btn-plus" type="button">&plus;</button>
                 </div>
               </div>
-
+{% endfor %}
             </div>
             <p><a data-product="{{product.title}}" data-action="add" href="{% url 'home:cart' %}" class="buy-now btn btn-sm btn-primary">Thêm vào giỏ hàng</a></p>
 
@@ -228,7 +228,7 @@
     </footer>
 
   </div>
-
+{% endblock %}
   <script src="{% static 'js/jquery-3.3.1.min.js' %}"></script>
   <script src="{% static 'js/jquery-ui.js' %}"></script>
   <script src="{% static 'js/popper.min.js' %}"></script>

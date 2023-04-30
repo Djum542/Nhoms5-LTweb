@@ -96,17 +96,19 @@
                   <li><a href="#">Menu Three</a></li>
                 </ul>
               </li>
+             
               <li><a href="{% url 'home:shop' %}">Bộ sưu tập</a></li>
               <li><a href="#">Tuyển dụng</a></li>
               <li><a href="#">Chăm sóc khách hàng</a></li>
               <li><a href="contact.html">Liên hệ</a></li>
             </ul>
           </div>
+         
         </nav>
       </div>
     </header>
-    {% endblock %}
-    {% block content %}
+    
+    
     <div class="container-fluid">
       <div class="row">
 
@@ -168,6 +170,7 @@
               <h2>Sản phẩm nổi bật</h2>
             </div>
           </div>
+          {% for product in products %}
           <div class="row">
             <div class="col-md-12">
               <div class="nonloop-block-3 owl-carousel">
@@ -175,11 +178,25 @@
                   <div class="block-4 text-center">
                     <figure class="block-4-image">
                       <img
+                        src="{% url 'home:single' product.pk  %}"
+                        alt="{{product.image}}" class="img-fluid" />
+                    </figure>
+                    <div class="block-4-text p-4">
+                      <h3><a href="{% url 'home:single' product.id %}">{{product.name}}</a></h3>
+                      <p class="mb-0">{{product.descripyion}}</p>
+                      <p class="text-primary font-weight-bold">{{product.price}}</p>
+                    </div>
+                  </div>
+                </div>
+                <div class="item">
+                  <div class="block-4 text-center">
+                    <figure class="block-4-image">
+                      <img
                         src="https://levents.asia/wp-content/uploads/2022/11/z4015545486249_e90d2a95d04ede28e96c6796a9cc01ca-400x500.jpg"
                         alt="Image placeholder" class="img-fluid" />
                     </figure>
                     <div class="block-4-text p-4">
-                      <h3><a href="{% url 'home:single' %}">T-shirt</a></h3>
+                      <h3><a href="{% url 'home:single' product.id %}">T-shirt</a></h3>
                       <p class="mb-0">LEVENTS® 3RD ANNIVERSARY TEE/ WHITE</p>
                       <p class="text-primary font-weight-bold">300.000$</p>
                     </div>
@@ -193,7 +210,7 @@
                         alt="Image placeholder" class="img-fluid" />
                     </figure>
                     <div class="block-4-text p-4">
-                      <h3><a href="{% url 'home:single' %}">T-shirt</a></h3>
+                      <h3><a href="{% url 'home:single' product.id %}">T-shirt</a></h3>
                       <p class="mb-0">LEVENTS® 3RD ANNIVERSARY TEE/ WHITE</p>
                       <p class="text-primary font-weight-bold">300.000$</p>
                     </div>
@@ -207,7 +224,7 @@
                         alt="Image placeholder" class="img-fluid" />
                     </figure>
                     <div class="block-4-text p-4">
-                      <h3><a href="{% url 'home:single' %}">T-shirt</a></h3>
+                      <h3><a href="{% url 'home:single' product.id %}">T-shirt </a></h3>
                       <p class="mb-0">LEVENTS® 3RD ANNIVERSARY TEE/ WHITE</p>
                       <p class="text-primary font-weight-bold">300.000$</p>
                     </div>
@@ -221,21 +238,7 @@
                         alt="Image placeholder" class="img-fluid" />
                     </figure>
                     <div class="block-4-text p-4">
-                      <h3><a href="{% url 'home:single' %}">T-shirt </a></h3>
-                      <p class="mb-0">LEVENTS® 3RD ANNIVERSARY TEE/ WHITE</p>
-                      <p class="text-primary font-weight-bold">300.000$</p>
-                    </div>
-                  </div>
-                </div>
-                <div class="item">
-                  <div class="block-4 text-center">
-                    <figure class="block-4-image">
-                      <img
-                        src="https://levents.asia/wp-content/uploads/2022/11/z4015545486249_e90d2a95d04ede28e96c6796a9cc01ca-400x500.jpg"
-                        alt="Image placeholder" class="img-fluid" />
-                    </figure>
-                    <div class="block-4-text p-4">
-                      <h3><a href="{% url 'home:single' %}">T-shirt</a></h3>
+                      <h3><a href="{% url 'home:single' product.id %}">T-shirt</a></h3>
                       <p class="mb-0">LEVENTS® 3RD ANNIVERSARY TEE/ WHITE</p>
                       <p class="text-primary font-weight-bold">300.000$</p>
                     </div>
@@ -246,7 +249,7 @@
           </div>
         </div>
       </div>
-
+      {% endfor %}
       <div class="site-section block-8">
         <div class="container">
           <div class="row justify-content-center mb-5">

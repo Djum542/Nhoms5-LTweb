@@ -1,14 +1,15 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from .forms import loginform, signUpForm
-from django.views import View
-from .models import product, cart
+from django.views import View, generic
+from .models import product, cart, fileupload
 from django.contrib.auth.models import User
 from django.http import HttpResponse
 from django.contrib.auth import authenticate, login
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.decorators import login_required
 def home(request):
-    return render(request, 'home/index.html')
+    products = product.objects.all()
+    return render(request, 'home/index.html', {'products':products})
 # class loginform(View):
 #     def login(self, request):
 #         cF = loginform
@@ -53,9 +54,12 @@ def post(request):
     else:
         return render(request, 'home/signup.html')
 def shop(request):
-    return render(request, 'home/shop.html')
-def single(request):
-    return render(request, 'home/shop-single.html')
+    products = product.objects.all()
+    return render(request, 'home/shop.html', {'product':products})
+def single(request, pk):
+    produc = product.objects.get(id = pk)
+    print(product)
+    return render(request, 'home/shop-single.html', {'product':produc})
 
 def cart(request, product_id):
     # product = product.objects.get(id = product_id)
@@ -76,6 +80,10 @@ def cart(request, product_id):
     except cart.DoesNotExist:
         cart = cart.objects.create(user = request.user, product = product)
     return render(request, 'home/cart.html')
-def product_detail(request, name):
-    products = get_object_or_404(product, id = name)
-    return render(request, 'home/product.html', {'product':product})
+# def product_detail(request, name):
+#     model = product
+#     queryset = product.objects.all()
+#     context_name = 'products'
+#     qs = super().get_queryset()
+#     if 'category' in kw
+#     return render(request, 'home/product.html', {'product':product})
