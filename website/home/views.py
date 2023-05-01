@@ -73,38 +73,47 @@ def cart(request, pk):
     # }
     # request.sessions['cart'] = cart
     cart = product.objects.get(id = pk)
+    # cartd = cart(request)
+    if request.method == 'POST':
+        image = item['ImageField']
+        name = item['name']
+        price = item['price']
+        number = item['number']
+        cartd = cart.objects.create(image = ImageField, name = name, price = price, number = number)
+        cartd.save()
+    cart.save()
     # if request.method == 'POST':
     #    form = cart(request.POST)
     #    if form.is_valid():
     #         form.save()
      # Lấy sản phẩm dựa trên id
-    productd = get_object_or_404(product,id = pk)
+    # productd = get_object_or_404(product,id = pk)
     # Lấy giỏ hàng hiện tại của người dùng hoặc tạo một giỏ hàng mới nếu người dùng chưa có giỏ hàng
-    if request.method == 'POST':
-        carts = cart(request.POST)
-        if carts.is_valid():
+    # if request.method == 'POST':
+    #     carts = cart(request.POST)
+    #     if carts.is_valid():
         # Thêm sản phẩm vào giỏ hàng
             # carts.add(cart=productd)
-            def add(product):
-                product_id = str(product.id)
-                if product_id not in carts:
-                    cart[product_id] = {'quantity': 0, 'price': str(product.price)}
-                    cart[product_id]['quantity'] += 1
-                    carts.save()
+            # def add(product):
+            #     product_id = str(product.id)
+            #     if product_id not in carts:
+            #         cart[product_id] = {'quantity': 0, 'price': str(product.price)}
+            #         cart[product_id]['quantity'] += 1
+            #         carts.save()
         # Chuyển hướng đến trang giỏ hàng
-            return redirect('cart/<str:pk>/')
+    return render(request, 'home/cart.html', {'cart':cart})
             # return redirect('home')
-    def clear(self):
-        # Xóa giỏ hàng khỏi session
-        del self.session[settings.CART_SESSION_ID]
-        self.session.modified = True
+# def clear():
+#         # Xóa giỏ hàng khỏi session
+#     del session[settings.CART_SESSION_ID]
+#     session.modified = True
     # try:
     #     carts = cart.objects.get(user = request.user, product = product)
     #     carts.quantity +=1
     #     carts.save()
     # except cart.DoesNotExist:
     #     cart = cart.objects.create(user = request.user, product = product)
-    return render(request, 'home/cart.html', {'cart':cart})
+    # return render(request, 'home/cart.html')
 # def product_detail(request, name):
 #     model = product
 #     queryset = product.objects.all()
@@ -112,3 +121,10 @@ def cart(request, pk):
 #     qs = super().get_queryset()
 #     if 'category' in kw
 #     return render(request, 'home/product.html', {'product':product})
+def remove_from_cart(request, pk):
+    productd = cart.objects.all()
+    cart = cart(request)
+    cartd = cart.objects.get(id = pk)
+    cart.remove(cartd)
+    return redirect('cart')
+    return render(request, 'home/cart.html', {'productd':productd})

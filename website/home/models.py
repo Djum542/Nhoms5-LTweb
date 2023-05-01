@@ -18,10 +18,10 @@ class product(models.Model):
     def __str__(self):
         return self.name
 class cart(models.Model):
-    # ImageField = models.ImageField(null=True, blank=True)
-    # name = models.CharField(max_length=200)
-    # price = models.FloatField()
-    # number = models.CharField(max_length=12)
+    ImageField = models.ImageField(null=True, blank=True)
+    name = models.CharField(max_length=200)
+    price = models.FloatField()
+    number = models.CharField(max_length=12)
     user = models.ForeignKey(User, on_delete = models.CASCADE)
     product = models.ForeignKey(product, on_delete = models.CASCADE)
     quantity = models.PositiveIntegerField(default = 1)
