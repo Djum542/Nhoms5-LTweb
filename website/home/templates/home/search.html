@@ -1,0 +1,80 @@
+{% extends 'home/base.html' %}
+{% block body %}
+<h1>Tìm kiếm</h1>
+<div class="col-6 col-md-4 order-2 order-md-1 site-search-icon text-left">
+    <form action="{% url 'home:search' %}" class="site-block-top-search">
+      <span class="icon icon-search2"></span>
+      <input type="text" class="form-control border-0" placeholder="Search" />
+    </form>
+  </div>
+  {% if query %}
+    <h2>Kết quả tìm kiếm cho "{{ query }}"</h2>
+    <ul>
+      {% for product in product %}
+        <li>{{ product.name }}</li>
+      {% empty %}
+        <li>Không có kết quả tìm kiếm</li>
+      {% endfor %}
+    </ul>
+  {% endif %}
+  <footer class="site-footer border-top">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-6 mb-5 mb-lg-0">
+          <div class="row">
+            <div class="col-md-12">
+              <h3 class="footer-heading mb-4">VỀ CHÚNG TÔI</h3>
+            </div>
+            <div class="col-md-6 col-lg-4">
+              <ul class="list-unstyled">
+                <li><a href="#">Tất cả</a></li>
+                <li><a href="#">New Arrival</a></li>
+                <li><a href="#">Our Wear</a></li>
+                <li><a href="#">Phụ kiện</a></li>
+              </ul>
+            </div>
+            <div class="col-md-6 col-lg-4">
+              <ul class="list-unstyled">
+                <li><a href="#">Áo</a></li>
+                <li><a href="#">Quần</a></li>
+                <li><a href="#">Jacket</a></li>
+              </ul>
+            </div>
+            <div class="col-md-6 col-lg-4">
+              <ul class="list-unstyled">
+                <li><a href="#">Liên hệ</a></li>
+                <li><a href="#">Tuyển dụng</a></li>
+                <li><a href="#">CSKH</a></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-6 col-lg-3 mb-4 mb-lg-0">
+          <h3 class="footer-heading mb-4">Promo</h3>
+          <a href="#" class="block-6">
+            <img style="width: 200px;" src="https://levents.asia/wp-content/uploads/2023/02/logoSaleNoti-1.png"
+              alt="Image placeholder" class="img-fluid rounded mb-4" />
+            <h3 class="font-weight-light mb-0">
+              Mä só thuê: 41J8031547
+            </h3>
+            <p>Ngày cấp: 06/07/2021</p>
+          </a>
+        </div>
+        <div class="col-md-6 col-lg-3">
+          <div class="block-5 mb-5">
+            <h3 class="footer-heading mb-4">Contact Info</h3>
+            <ul class="list-unstyled">
+              <li class="address">
+                842 Sư Vạn Hạnh, Phường 12, Quận 10, HCM
+              </li>
+              <li class="phone">
+                <a href="tel://23923929210">1900 633 028</a>
+              </li>
+              <li class="email">business@levents.asia</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </footer>
+{% endblock %}

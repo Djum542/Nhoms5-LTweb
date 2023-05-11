@@ -50,7 +50,7 @@
                   <li><a href="#"><span class="icon icon-person"></span></a></li>
                   <li><a href="#"><span class="icon icon-heart-o"></span></a></li>
                   <li>
-                    <a href="{% url 'home:cart' cart.id%}" class="site-cart">
+                    <a href="{% url 'home:cart' carts.id %}" class="site-cart">
                       <span class="icon icon-shopping_cart"></span>
                       <span class="count">2</span>
                     </a>
@@ -173,16 +173,17 @@
                     <td>300.000đ</td>
                     <td><a href="#" class="btn btn-primary btn-sm">X</a></td>
                   </tr>
-                  
+                 
+                  <form action="#" method="post">
                   <tr>
                     <td class="product-thumbnail">
-                      <img src="{{cart.image}}" alt="Image" class="img-fluid">
+                      <img src="{{carts.image.url}}" alt="Image" class="img-fluid">
                     </td>
                     <td class="product-name">
                       <h2 class="h5 text-black">
-                        {{cart.name}}</h2>
+                        {{carts.name}}</h2>
                     </td>
-                    <td>{{cart.price}}</td>
+                    <td>{{carts.price}}</td>
                     <td>
                       <div class="input-group mb-3" style="max-width: 120px;">
                         <div class="input-group-prepend">
@@ -195,16 +196,18 @@
                       </div>
 
                     </td>
-                    <td>{{cart.price}}</td>
-                    <td><a href="/" class="btn btn-primary btn-sm">X</a></td>
-                  </tr>
+                    <td>{{carts.price}}</td>
                   
+                    <td><a href="#" class="btn btn-primary btn-sm">X</a></td>
+                  </tr>
+                </form>
+                
                 </tbody>
               </table>
             </div>
           </form>
         </div>
-
+        <form action="{% url 'home:cart' %}" method="POST"></form>
         <div class="row">
           <div class="col-md-6">
             <div class="row mb-5">
@@ -235,13 +238,14 @@
                 <div class="row">
                   <div class="col-md-12">
                     <button class="btn btn-primary btn-lg py-3 btn-block" >
-                      <a href="{% url 'home:shop'  %}">Thanh Toán</a> </button>
+                      <a href="{% url 'home:order'  %}">Thanh Toán</a> </button>
                   </div>
                 </div>
               </div>
             </div>
           </div>
         </div>
+      </form>
       </div>
     </div>
 

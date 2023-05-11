@@ -72,16 +72,27 @@ def cart(request, pk):
     #     'image': product.image.url
     # }
     # request.sessions['cart'] = cart
-    cart = product.objects.get(id = pk)
+    carts = product.objects.get(id = pk)
     # cartd = cart(request)
     if request.method == 'POST':
         image = item['ImageField']
         name = item['name']
         price = item['price']
         number = item['number']
-        cartd = cart.objects.create(image = ImageField, name = name, price = price, number = number)
+        cartd = cart.objects.create(ImageField, name, price, number)
         cartd.save()
-    cart.save()
+    carts.save()
+    # cart = cart(request)
+    
+
+    # def map_function(p):
+    #     pid = str(p.id)
+    #     q = cart.cart[pid]['quantity']
+    #     return {'product': p, 'quantity': q, 'total': p.price*q, 'form': CartForm(initial={'quantity': q, 'product_id': pid})}
+
+    # cart_items = map(map_function, product)
+    # return render(request, 'cart/cart_details.html', {'cart_items': cart_items, 'total': cart.get_total_price()})
+
     # if request.method == 'POST':
     #    form = cart(request.POST)
     #    if form.is_valid():
@@ -101,7 +112,7 @@ def cart(request, pk):
             #         cart[product_id]['quantity'] += 1
             #         carts.save()
         # Chuyển hướng đến trang giỏ hàng
-    return render(request, 'home/cart.html', {'cart':cart})
+    return render(request, 'home/cart.html', {'carts':carts})
             # return redirect('home')
 # def clear():
 #         # Xóa giỏ hàng khỏi session
@@ -121,10 +132,37 @@ def cart(request, pk):
 #     qs = super().get_queryset()
 #     if 'category' in kw
 #     return render(request, 'home/product.html', {'product':product})
+# def remove_from_cart(request, pk):
+#     productd = cart.objects.all()
+#     cart = cart(request)
+#     cartd = cart.objects.get(id = pk)
+#     cart.remove(cartd)
+#     return redirect('cart')
+#     return render(request, 'home/cart.html', {'productd':productd})
+def search(request):
+    query = request.GET.get('query')
+    # query = form.cleaned_data.get('query', '')
+    results = []
+    if query:
+        # Sử dụng Q objects và icontains để tìm kiếm sản phẩm
+        results = Product.objects.filter(
+            Q(name__icontains=query) | Q(description__icontains=query)
+        )
+    context = {
+        # 'form': form,
+        'query': query,
+        'results': results
+    }
+    if query:
+        results = Product.objects.filter(Q(name__icontains=query) | Q(description__icontains=query))
+    else:
+        results = None
+    return render(request, 'home/search.html', {'results': results})
 def remove_from_cart(request, pk):
-    productd = cart.objects.all()
     cart = cart(request)
-    cartd = cart.objects.get(id = pk)
-    cart.remove(cartd)
+    cart.remove(str(pk))
     return redirect('cart')
-    return render(request, 'home/cart.html', {'productd':productd})
+def out(request):
+    return render(request, "home/checkout.html")
+def orders(request):
+    return render(request, "home/order.html")

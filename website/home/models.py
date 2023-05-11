@@ -11,12 +11,20 @@ class fileupload(models.Model):
     def __str__(self):
         return self.title
 class product(models.Model):
-    image = models.ImageField(null=True, blank=True)
+    image = models.ImageField()
     name = models.CharField(max_length=200)
     price = models.FloatField()
-    descripyion = models.TextField()
+    # descripyion = models.TextField()
     def __str__(self):
         return self.name
+    @property
+    def imageURL(self):
+        try:
+            url = self.image.url
+        except:
+            url = ''
+        return url
+
 class cart(models.Model):
     ImageField = models.ImageField(null=True, blank=True)
     name = models.CharField(max_length=200)
