@@ -35,5 +35,14 @@ class cart(models.Model):
     quantity = models.PositiveIntegerField(default = 1)
     def __str__(self):
         return f"{self.quantity} x {self.product.product_id}"
-
+class orders(models.Model):
+    name = models.CharField(max_length=200)
+    email = models.CharField(max_length=200)
+    address = models.CharField(max_length=200)
+    city = models.CharField(max_length=200)
+    state = models.CharField(max_length=200)
+    zipcode = models.CharField(max_length=200)
+    product = models.ForeignKey(product, on_delete = models.SET_NULL, null=True, blank=False)
+    def __str__(self):
+        return self.name
 

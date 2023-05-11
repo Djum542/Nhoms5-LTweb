@@ -1,7 +1,7 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from .forms import loginform, signUpForm
 from django.views import View, generic
-from .models import product, cart, fileupload
+from .models import product, cart, fileupload, orders
 from django.contrib.auth.models import User
 from django.http import HttpResponse
 from django.contrib.auth import authenticate, login
@@ -163,6 +163,30 @@ def remove_from_cart(request, pk):
     cart.remove(str(pk))
     return redirect('cart')
 def out(request):
+    if request.method == 'POST':
+        username = request.POST['username'] # truyền thông tin theo phương thức post
+        email = request.POST['email']
+        password = request.POST['password']
+        user = User.objects.create_user(username, email ,password)
+        user.save()
+        return render(request, 'home/login.html')
+    else:
+        return render(request, 'home/signup.html')
     return render(request, "home/checkout.html")
-def orders(request):
+def orders(request, pk):
+    order = product.objects.get(id=pk)
+    return render(request, 'home/order.html', {'order':order})
+    if request.method == 'POST':
+        name = request.POST['name'] # truyền thông tin theo phương thức post
+        email = request.POST['email']
+        adsresss = request.POST['address']
+        city = request.POST['city']
+        state = request.POST['state']
+        zipcode = request.POST['zipcode']
+        user = User.objects.create_user(username, email ,password)
+        user.save()
+        
+        return render(request, 'home/order.html', {'order':order})
+    else:
+        return render(request, 'home/index.html')
     return render(request, "home/order.html")
